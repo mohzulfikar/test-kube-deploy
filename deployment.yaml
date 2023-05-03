@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment #The name of the Kubernetes Deployment to be created in the Kubernetes cluster
+  labels:
+    app: nginx
+spec:
+  replicas: 1 #The number of pods to be created in the Kubernetes cluster for the React.js application container
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx-app
+        image: nginx:latest
+        ports:
+        - containerPort: 80
